@@ -1,3 +1,3 @@
 
-s = input()
+s = "Wow "
 print(s + "Hello git!")
