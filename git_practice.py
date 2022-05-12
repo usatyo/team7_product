@@ -1,3 +1,3 @@
 
 s = input()
-print(s + "Hello git!")aa
+print(s + "Hello git!")
