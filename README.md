@@ -1,1 +1,0 @@
-# team7_product
