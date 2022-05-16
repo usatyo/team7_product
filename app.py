@@ -8,16 +8,11 @@ from linebot.models import (
     TextMessage,
     TextSendMessage,
 )
-# from apscheduler.schedulers.background import BackgroundScheduler
 
-# def sensor():
-#     print("scheduler is alive")
+import datetime
+import time
 
-# sched = BackgroundScheduler(daemon=True)
-# sched.add_job(sensor, 'interval', minutes=60)
-# sched.start()
-
-# app = Flask(__name__)
+app = Flask(__name__)
 
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
 YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
@@ -46,11 +41,20 @@ def callback():
     return "OK"
 
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    msg = event.message.text
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))
+# @handler.add(MessageEvent, message=TextMessage)
+# def handle_message(event):
+#     msg = event.message.text
+#     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))
 
 
 if __name__ == "__main__":
     app.run()
+  
+while True:
+    dt_now = datetime.datetime.now()
+    if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
+        messages = TextSendMessage(text='hello')
+        line_bot_api.broadcast(messages=messages)
+        print('sent')
+    time.sleep(1)
+    print('done')
