@@ -59,7 +59,8 @@ if __name__ == "__main__":
 
 while True:
     dt_now = datetime.datetime.now()
-    if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
+    # if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
+    if dt_now.second == 0:
         if rain_check.rain_check():
             messages = TextSendMessage(text='今日は雨')
         line_bot_api.broadcast(messages=messages)
