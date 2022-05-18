@@ -1,3 +1,4 @@
+import imp
 import os, random
 from flask import Flask, request, abort
 
@@ -9,6 +10,7 @@ from linebot.models import (
     TextSendMessage,
 )
 from apscheduler.schedulers.background import BackgroundScheduler
+import rain_check
 
 def sensor():
     print("scheduler is alive")
@@ -46,14 +48,10 @@ def callback():
     return "OK"
 
 
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    msg = event.message.text
-
-
-
-
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))
+# @handler.add(MessageEvent, message=TextMessage)
+# def handle_message(event):
+#     msg = event.message.text
+#     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))
 
 
 if __name__ == "__main__":
