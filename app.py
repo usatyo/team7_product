@@ -63,7 +63,5 @@ while True:
     if dt_now.second == 0:
         if rain_check.rain_check():
             messages = TextSendMessage(text='今日は雨')
-        line_bot_api.broadcast(messages=messages)
-        print('sent')
+            line_bot_api.broadcast(messages=messages)
     time.sleep(1)
-    print('done')
