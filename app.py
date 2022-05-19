@@ -7,12 +7,14 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
     MessageEvent,
     TextMessage,
+    FlexSendMessage,
     TextSendMessage,
 )
 from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 import time
 import rain_check
+import jsonmessage
 
 def sensor():
     print("scheduler is alive")
@@ -54,14 +56,17 @@ def callback():
 #     msg = event.message.text
 #     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))
 
+# messages = TextSendMessage(text='今日は雨')
+
+
 if __name__ == "__main__":
     app.run()
 
 while True:
     dt_now = datetime.datetime.now()
-    # if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
-    if dt_now.second == 0:
+    if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
         if rain_check.rain_check():
-            messages = TextSendMessage(text='今日は雨')
+            json_data = jsonmessage.make_json("今日は雨")
+            messages = FlexSendMessage(alt_text='rain notify!' ,contents=json_data)
             line_bot_api.broadcast(messages=messages)
     time.sleep(1)
