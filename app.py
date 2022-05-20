@@ -10,18 +10,10 @@ from linebot.models import (
     FlexSendMessage,
     TextSendMessage,
 )
-from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 import time
 import rain_check
 import jsonmessage
-
-def sensor():
-    print("scheduler is alive")
-
-sched = BackgroundScheduler(daemon=True)
-sched.add_job(sensor, 'interval', minutes=60)
-sched.start()
 
 app = Flask(__name__)
 
@@ -58,12 +50,3 @@ if rain_check.rain_check():
 
 if __name__ == "__main__":
     app.run()
-
-# while True:
-#     dt_now = datetime.datetime.now()
-#     if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
-#         if rain_check.rain_check():
-#             json_data = jsonmessage.make_json("今日は雨")
-#             messages = FlexSendMessage(alt_text='rain notify!' ,contents=json_data)
-#             line_bot_api.broadcast(messages=messages)
-#     time.sleep(1)
