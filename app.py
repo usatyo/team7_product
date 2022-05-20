@@ -51,13 +51,10 @@ def callback():
 
     return "OK"
 
-# @handler.add(MessageEvent, message=TextMessage)
-# def handle_message(event):
-#     msg = event.message.text
-#     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=msg))
-
-# messages = TextSendMessage(text='今日は雨')
-
+if rain_check.rain_check():
+    json_data = jsonmessage.make_json()
+    messages = FlexSendMessage(alt_text='rain notify!' ,contents=json_data)
+    line_bot_api.broadcast(messages=messages)
 
 if __name__ == "__main__":
     app.run()

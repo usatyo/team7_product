@@ -1,10 +1,11 @@
+import rain_check
 
-def make_json(message):
+def make_json():
   json_data = {
     "type": "bubble",
     "hero": {
       "type": "image",
-      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+      "url": "https://drive.google.com/uc?id=1Vwo3nMxsauDKSmNfgXsfOwgEEJhjcbBe",
       "size": "full",
       "aspectRatio": "20:13",
       "aspectMode": "cover",
@@ -19,49 +20,9 @@ def make_json(message):
       "contents": [
         {
           "type": "text",
-          "text": message,
+          "text": "今日は雨",
           "weight": "bold",
           "size": "xl"
-        },
-        {
-          "type": "box",
-          "layout": "baseline",
-          "margin": "md",
-          "contents": [
-            {
-              "type": "icon",
-              "size": "sm",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            },
-            {
-              "type": "icon",
-              "size": "sm",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            },
-            {
-              "type": "icon",
-              "size": "sm",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            },
-            {
-              "type": "icon",
-              "size": "sm",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"
-            },
-            {
-              "type": "icon",
-              "size": "sm",
-              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-            },
-            {
-              "type": "text",
-              "text": "4.0",
-              "size": "sm",
-              "color": "#999999",
-              "margin": "md",
-              "flex": 0
-            }
-          ]
         },
         {
           "type": "box",
@@ -76,14 +37,14 @@ def make_json(message):
               "contents": [
                 {
                   "type": "text",
-                  "text": "Place",
+                  "text": "場所",
                   "color": "#aaaaaa",
                   "size": "sm",
                   "flex": 1
                 },
                 {
                   "type": "text",
-                  "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
+                  "text": "北海道地方",
                   "wrap": True,
                   "color": "#666666",
                   "size": "sm",
@@ -98,14 +59,14 @@ def make_json(message):
               "contents": [
                 {
                   "type": "text",
-                  "text": "Time",
+                  "text": "天気",
                   "color": "#aaaaaa",
                   "size": "sm",
                   "flex": 1
                 },
                 {
                   "type": "text",
-                  "text": "10:00 - 23:00",
+                  "text": rain_check.weather_string(),
                   "wrap": True,
                   "color": "#666666",
                   "size": "sm",
@@ -128,8 +89,8 @@ def make_json(message):
           "height": "sm",
           "action": {
             "type": "uri",
-            "label": "CALL",
-            "uri": "https://linecorp.com"
+            "label": "天気予報を見る",
+            "uri": "https://www.jma.go.jp/bosai/forecast/"
           }
         },
         {
@@ -138,8 +99,8 @@ def make_json(message):
           "height": "sm",
           "action": {
             "type": "uri",
-            "label": "WEBSITE",
-            "uri": "https://linecorp.com"
+            "label": "ネットショッピング",
+            "uri": "https://www.amazon.co.jp/"
           }
         },
         {
