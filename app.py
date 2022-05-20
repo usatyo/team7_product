@@ -62,11 +62,11 @@ def callback():
 if __name__ == "__main__":
     app.run()
 
-while True:
-    dt_now = datetime.datetime.now()
-    if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
-        if rain_check.rain_check():
-            json_data = jsonmessage.make_json("今日は雨")
-            messages = FlexSendMessage(alt_text='rain notify!' ,contents=json_data)
-            line_bot_api.broadcast(messages=messages)
-    time.sleep(1)
+# while True:
+#     dt_now = datetime.datetime.now()
+#     if dt_now.hour == 7 and dt_now.minute == 0 and dt_now.second == 0:
+#         if rain_check.rain_check():
+#             json_data = jsonmessage.make_json("今日は雨")
+#             messages = FlexSendMessage(alt_text='rain notify!' ,contents=json_data)
+#             line_bot_api.broadcast(messages=messages)
+#     time.sleep(1)
