@@ -43,6 +43,14 @@ def callback():
 
     return "OK"
 
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    if event.message.text == 'sample':
+        json_data = jsonmessage.make_json()
+        line_bot_api.reply_message(
+            event.reply_token,
+            FlexSendMessage(alt_text='rain notify!' ,contents=json_data))
+
 if rain_check.rain_check():
     json_data = jsonmessage.make_json()
     messages = FlexSendMessage(alt_text='rain notify!' ,contents=json_data)
